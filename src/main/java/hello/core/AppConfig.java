@@ -12,6 +12,7 @@ import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+// Configuration을 설정해주지 않으면 싱글톤이 깨진다.
 @Configuration
 public class AppConfig {
     //@Bean memberService -> new MemoryMemberRepository()
