@@ -19,10 +19,8 @@ public class BeanLifeCycleTest {
 
     @Configuration
     static class LifeCycleConfig {
-
-
-        // 스프링 빈이 스프링 코드에 의존하지 않는 장점
-        @Bean(initMethod = "init", destroyMethod = "")
+        // @Bean(initMethod = "init", destroyMethod = "")
+        @Bean
         public NetworkClient networkClient() {
         NetworkClient networkClient = new NetworkClient();
         networkClient.setUrl("http://hello-spring.dev");
