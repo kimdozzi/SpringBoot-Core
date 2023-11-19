@@ -15,18 +15,23 @@ public class HelloController {
         return "hello";
     }
 
-    @GetMapping("hello/mvc")
-    public String helloMvc(@RequestParam(value = "name", required = true) String requestName, Model model) {
+    @GetMapping("hello-mvc")
+    public String helloMvc(@RequestParam(value = "name", required = false) String requestName, Model model) {
         model.addAttribute("name", requestName);
         return "hello-template";
     }
 
-    @ResponseBody
+
+    // String
+    // viewResolver를 사용하지 않고 문자 내용을 직접 반환
     @GetMapping("hello-string")
+    @ResponseBody
     public String helloString(@RequestParam("name") String name) {
         return "hello " + name;
     }
 
+
+    // API (json형식)
     @GetMapping("hello-api")
     @ResponseBody
     public Hello helloApi(@RequestParam("name") String name) {
