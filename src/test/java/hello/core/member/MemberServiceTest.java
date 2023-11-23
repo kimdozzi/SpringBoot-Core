@@ -11,10 +11,7 @@ class MemberServiceTest {
     MemberService memberService = new MemberServiceImpl();
     MemoryMemberRepository memberRepository = new MemoryMemberRepository();
 
-    @AfterEach
-    void afterEach() {
-        memberRepository.afterEach();
-    }
+
 
     @Test
     void join() {
