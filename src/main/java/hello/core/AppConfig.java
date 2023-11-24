@@ -9,25 +9,29 @@ import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+
+@Configuration
 public class AppConfig {
+    @Bean
     public MemberService memberService() {
-        // Dependency Injection
         return new MemberServiceImpl(memberRepository());
     }
 
-    private MemberRepository memberRepository() {
+    @Bean
+    public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 
+    @Bean
     public OrderService orderService() {
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
+    @Bean
     public DiscountPolicy discountPolicy() {
-//        return new FixDiscountPolicy();
-        // 클라이언트에서 코드를 변경해주지 않아도 된다.
-        // 즉, OCP와 DIP 정책을 위반하지 않는다.
         return new RateDiscountPolicy();
     }
 }
