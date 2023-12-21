@@ -20,4 +20,8 @@ public class MemberServiceImpl implements MemberService {
         return memberRepository.findById(memberId);
     }
 
+    // 스프링의 @Configuration 싱글톤 테스트를 위한 Getter
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
